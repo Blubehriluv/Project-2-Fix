@@ -23,75 +23,14 @@ namespace Decimal_to_Hex_Converter
             {
                 string userInput;
                 int userNum;
-                /*
-                do
-                {
-                    Console.Write("Number to convert: ");
-                    userInput = Console.ReadLine();
-                    if (userInput == "q")
-                    {
-                        Console.WriteLine("The user is quitting.");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey(true);
-                    }
 
-                    else if (userInput != "q")
-                    {
-                        for (int i = 0; i < userInput.Length; i++)
-                        {
-                            //if (userInput[i] != )
-                            {
-
-                            }
-                        }
-                        
-                        userNum = Convert.ToInt32(userInput);
-                        //if (userInput )
-                        Console.WriteLine("The user entered a number");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey(true);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter a numeric value, or 'q' to quit.");
-                    }
-                } //while (userInput == "q" || userNum >= 0 && userNum <= 1000000);
-
-                do
-                {
-                    Console.Write("Number to convert: ");
-                    userInput = Console.ReadLine();
-                    //userNum = Convert.ToInt32(userInput);
-
-                    if ()
-                    {
-                        Console.WriteLine("The user is quitting");
-                        Console.WriteLine("Press any key to continue...");
-                        Console.ReadKey(true);
-                    }
-
-                    else if (userInput != "q" || userInput != "Q" || userInput != "Quit" || userInput != "quit")
-                    {
-                        if (Convert.ToInt32(userInput) < 0 || Convert.ToInt32(userInput) > 1000000)
-                        {
-                            
-                        }
-                        
-                    }
-                    else
-                    {
-                        userNum = Convert.ToInt32(userInput);
-                        //if (userNum >=
-                    }
-                } while (userInput != null);*/
-
-                do
+                try
                 {
                     //userInput = Console.ReadLine();
                     //userNum = Convert.ToInt32(userInput);
 
                     userNum = Convert.ToInt32(Console.ReadLine());
-                    
+                    userInput = Convert.ToString(userNum);
 
 
                     if (userNum >= 0 && userNum <= 1000000)
@@ -102,23 +41,6 @@ namespace Decimal_to_Hex_Converter
                         //hexChange();
                     }
 
-                    else
-                    {
-                        userInput = Convert.ToString(userNum);
-
-                        if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
-                        {
-                            Console.WriteLine("User is quitting");
-                            Console.WriteLine("Press any key to continue...");
-                            Console.ReadKey(true);
-                        }
-
-                        else
-                        {
-                            System.Console.WriteLine("Please enter a valid number, or use 'q' to exit.");
-                        }
-                    }
-                    /*
                     else if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
                     {
                         Console.WriteLine("User is quitting");
@@ -129,9 +51,29 @@ namespace Decimal_to_Hex_Converter
                     else
                     {
                         System.Console.WriteLine("Please enter a valid number, or use 'q' to exit.");
-                    }*/
+                    }
+                } // while (userNum != null);
 
-                } while (userNum != null);
+                catch (System.FormatException e)
+                {
+                    userInput = Console.ReadLine();
+
+                    if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
+                    {
+                        Console.WriteLine("User is quitting");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                    }
+
+                    else
+                    {
+                        System.Console.WriteLine("Please enter a valid number, or use 'q' to exit.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                    }
+
+                    throw;
+                }
             }
 
             void hexChange()
