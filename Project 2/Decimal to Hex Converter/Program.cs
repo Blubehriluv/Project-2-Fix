@@ -39,6 +39,7 @@ namespace Decimal_to_Hex_Converter
                         Console.WriteLine("Press any key to continue...");
                         Console.ReadKey(true);
                         //hexChange();
+                        beginConverting();
                     }
 
                     else if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
