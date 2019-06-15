@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics.Eventing.Reader;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +12,6 @@ namespace Decimal_to_Hex_Converter
     {
         static void Main(string[] args)
         {
-            string userInput;
             Console.WriteLine("Welcome to the Decimal to Hex Converter!");
             Console.WriteLine("Enter a number to be converted.");
             Console.WriteLine("Use 'q' to exit the program.");
@@ -23,21 +21,64 @@ namespace Decimal_to_Hex_Converter
 
             void beginConverting()
             {
-                foreach (var value in values)
-                {
-                    int number;
+                string userInput;
+                int userNum;
 
-                    bool success = Int32.TryParse(value, out number);
-                    if (success)
+                try
+                {
+                    //userInput = Console.ReadLine();
+                    //userNum = Convert.ToInt32(userInput);
+
+                    userNum = Convert.ToInt32(Console.ReadLine());
+                    userInput = Convert.ToString(userNum);
+
+
+                    if (userNum >= 0 && userNum <= 1000000)
                     {
-                        Console.WriteLine("Converted '{0}' to {1}.", value, number);
+                        Console.WriteLine("Getting a hex change");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                        //hexChange();
                     }
+
+                    else if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
+                    {
+                        Console.WriteLine("User is quitting");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                    }
+
                     else
                     {
-                        Console.WriteLine("Attempted conversion of '{0}' failed.",
-                            value ?? "<null>");
+                        System.Console.WriteLine("Please enter a valid number, or use 'q' to exit.");
                     }
+                } // while (userNum != null);
+
+                catch (System.FormatException e)
+                {
+                    userInput = Console.ReadLine();
+
+                    if (userInput == "q" || userInput == "Q" || userInput == "Quit" || userInput == "quit")
+                    {
+                        Console.WriteLine("User is quitting");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                    }
+
+                    else
+                    {
+                        System.Console.WriteLine("Please enter a valid number, or use 'q' to exit.");
+                        Console.WriteLine("Press any key to continue...");
+                        Console.ReadKey(true);
+                    }
+
+                    throw;
                 }
+            }
+
+            void hexChange()
+            {
+
             }
         }
     }
